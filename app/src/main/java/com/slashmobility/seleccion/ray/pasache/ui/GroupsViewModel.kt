@@ -1,4 +1,7 @@
 package com.slashmobility.seleccion.ray.pasache.ui
 
-class GroupsViewModel {
+import androidx.lifecycle.ViewModel
+import com.slashmobility.seleccion.ray.pasache.domain.GroupsUseCase
+
+class GroupsViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
 }

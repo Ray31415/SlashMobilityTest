@@ -1,4 +1,6 @@
 package com.slashmobility.seleccion.ray.pasache.ui
 
-class GroupsFragment {
+import androidx.fragment.app.Fragment
+
+class GroupsFragment: Fragment() {
 }

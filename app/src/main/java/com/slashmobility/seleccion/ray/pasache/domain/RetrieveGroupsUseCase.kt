@@ -1,4 +1,6 @@
 package com.slashmobility.seleccion.ray.pasache.domain
 
-class RetrieveGroupsUseCase {
+import com.slashmobility.seleccion.ray.pasache.repository.GroupsRepository
+
+class RetrieveGroupsUseCase(val groupsRepository: GroupsRepository) {
 }

@@ -1,4 +1,8 @@
 package com.slashmobility.seleccion.ray.pasache.repository
 
-class GroupsRepository {
+import com.slashmobility.seleccion.ray.pasache.datasource.LocalGroupsDataSource
+import com.slashmobility.seleccion.ray.pasache.datasource.RemoteGroupsDataSource
+
+class GroupsRepository(val remoteGroupsDataSource: RemoteGroupsDataSource,
+                       val localGroupsDataSource: LocalGroupsDataSource) {
 }
