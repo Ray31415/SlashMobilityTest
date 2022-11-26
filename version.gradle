@@ -1,0 +1,23 @@
+
+ext {
+    target_version = 31
+    minsdk_version = 21
+    code_version = 1
+    name_version = "1.0"
+
+    kotlin_version = "1.6.0"
+    ktx_version = "1.7.0"
+    nav_version = "2.4.0-rc01"
+    compat_version = "1.4.0"
+    material_version = "1.4.0"
+    constraint_version = "2.1.2"
+    koin_version = "2.2.3"
+    koinvm_version = "2.2.3"
+    retrofit_version = "2.9.0"
+    room_verssion = "2.4.0"
+    viewmodel_version = "2.4.0"
+    livedata_version = "2.4.0"
+    joda_version = "2.10.10"
+    lottie_version = "3.6.1"
+    mockito_version = "3.8.0"
+}
