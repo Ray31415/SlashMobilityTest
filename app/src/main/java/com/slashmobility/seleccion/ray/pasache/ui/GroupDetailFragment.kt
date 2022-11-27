@@ -38,11 +38,13 @@ class GroupDetailFragment: Fragment() {
     }
 
     private fun configUI(group: GroupAPIModel) {
-
         group.name?.let {
             sharedViewModel.updateToolbarNavBack(it)
         }
         binding?.groupCardView?.configUI(group)
+        binding?.favButton?.setOnClickListener { view ->
+            view.isSelected = !view.isSelected
+        }
         binding?.descriptionTextView?.text = group.description
     }
 }

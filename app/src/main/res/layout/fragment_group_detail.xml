@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/commons_20dp"
             android:layout_marginEnd="@dimen/commons_15dp"
             android:contentDescription="@null"
-            android:src="@drawable/favorite_border_white_24dp" />
+            android:src="@drawable/favorite_toggle" />
 
         <TextView
             android:id="@+id/description_text_view"
