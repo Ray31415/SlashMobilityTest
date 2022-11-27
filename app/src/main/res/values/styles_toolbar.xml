@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+    </style>
+
+    <style name="Toolbar.Primary" parent="Toolbar">
+        <item name="android:background">?colorPrimary</item> <!-- Indeed setting -->
+        <item name="android:textSize">@dimen/fontsize_subtitle</item>
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <style name="Toolbar.Primary.NoNavIcon" parent="Toolbar.Primary">
+        <item name="navigationIcon">@null</item>
+    </style>
+
+    <style name="Toolbar.Primary.NavIcon" parent="Toolbar.Primary">
+        <item name="contentInsetStart">@dimen/commons_00dp</item>
+        <item name="contentInsetEnd">@dimen/commons_00dp</item>
+        <item name="navigationIcon">@drawable/arrow_back_white_24dp</item> <!-- If not set it uses the system icon -->
+        <item name="contentInsetStartWithNavigation">@dimen/commons_00dp</item> <!-- To remove title padding -->
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+</resources>
