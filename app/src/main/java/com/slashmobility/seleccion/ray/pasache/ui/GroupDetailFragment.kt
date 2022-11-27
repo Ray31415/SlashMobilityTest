@@ -28,6 +28,7 @@ class GroupDetailFragment: Fragment() {
     }
 
     private fun configUI(group: GroupAPIModel) {
-        Picasso.get().load(group.defaultImageUrl).into(binding?.image)
+        binding?.groupCardView?.configUI(group)
+        binding?.descriptionTextView?.text = group.description
     }
 }

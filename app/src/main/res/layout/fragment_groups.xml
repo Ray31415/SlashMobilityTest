@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_group"
+        tools:listitem="@layout/component_group_card"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
