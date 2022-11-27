@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.slashmobility.seleccion.ray.pasache.databinding.FragmentGroupDetailBinding
 import com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel
@@ -24,6 +26,13 @@ class GroupDetailFragment: Fragment() {
         binding = FragmentGroupDetailBinding.inflate(inflater, container, false)
         group = args.group as GroupAPIModel
         configUI(group)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object: OnBackPressedCallback(true){
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            })
         return binding?.root
     }
 
