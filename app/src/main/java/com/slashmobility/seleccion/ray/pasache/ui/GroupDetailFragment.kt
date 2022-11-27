@@ -10,13 +10,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.slashmobility.seleccion.ray.pasache.databinding.FragmentGroupDetailBinding
 import com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel
-import com.squareup.picasso.Picasso
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class GroupDetailFragment: Fragment() {
 
     lateinit var group: GroupAPIModel
     private val args: GroupDetailFragmentArgs by navArgs()
     var binding: FragmentGroupDetailBinding?= null
+    private val sharedViewModel by sharedViewModel<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +38,10 @@ class GroupDetailFragment: Fragment() {
     }
 
     private fun configUI(group: GroupAPIModel) {
+
+        group.name?.let {
+            sharedViewModel.updateToolbarNavBack(it)
+        }
         binding?.groupCardView?.configUI(group)
         binding?.descriptionTextView?.text = group.description
     }

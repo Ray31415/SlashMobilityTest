@@ -9,12 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.slashmobility.seleccion.ray.pasache.R
 import com.slashmobility.seleccion.ray.pasache.databinding.FragmentGroupsBinding
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class GroupsFragment: Fragment() {
 
     var binding: FragmentGroupsBinding?= null
     private var adapter: GroupsAdapter? = null
     private var viewModel = get<GroupsViewModel>()
+    private val sharedViewModel by sharedViewModel<SharedViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +56,8 @@ class GroupsFragment: Fragment() {
     }
 
     private fun configUI() {
+        sharedViewModel.updateToolbarNoNavIcon(getString(R.string.app_name))
+
         //adapter
         adapter = GroupsAdapter(viewModel.groupList) { group ->
             findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail(group))
