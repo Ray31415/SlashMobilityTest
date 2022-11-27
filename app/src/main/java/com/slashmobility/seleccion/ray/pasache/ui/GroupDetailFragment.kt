@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.slashmobility.seleccion.ray.pasache.databinding.FragmentGroupDetailBinding
 import com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel
+import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class GroupDetailFragment: Fragment() {
@@ -17,6 +18,7 @@ class GroupDetailFragment: Fragment() {
     lateinit var group: GroupAPIModel
     private val args: GroupDetailFragmentArgs by navArgs()
     var binding: FragmentGroupDetailBinding?= null
+    private var viewModel = get<GroupDetailViewModel>()
     private val sharedViewModel by sharedViewModel<SharedViewModel>()
 
     override fun onCreateView(
@@ -44,6 +46,9 @@ class GroupDetailFragment: Fragment() {
         binding?.groupCardView?.configUI(group)
         binding?.favButton?.setOnClickListener { view ->
             view.isSelected = !view.isSelected
+            if(view.isSelected){
+                viewModel.insertFavoriteGroupList(group)
+            }
         }
         binding?.descriptionTextView?.text = group.description
     }

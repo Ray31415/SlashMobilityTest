@@ -14,4 +14,14 @@ class GroupsRepository(val remoteGroupsDataSource: RemoteGroupsDataSource,
             localGroupsDataSource.retrieveGroups()
         }
     }
+
+    fun insertFavoriteGroup(groupAPIModel: GroupAPIModel) {
+        localGroupsDataSource.insertFavoriteGroup(groupAPIModel)
+    }
+
+    fun removeFavoriteGroup(groupAPIModel: GroupAPIModel) {
+        localGroupsDataSource.removeFavoriteGroup(groupAPIModel)
+    }
+
+    fun retrieveFavoriteGroup() = localGroupsDataSource.retrieveFavoriteGroup()
 }
