@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SlashMobilityTest</string>
+    <string name="favorites">FAVORITES</string>
 </resources>

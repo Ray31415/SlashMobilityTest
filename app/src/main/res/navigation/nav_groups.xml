@@ -19,6 +19,14 @@
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_selector_to_group_favorite"
+            app:destination="@id/group_favorite"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
 
     <fragment
@@ -33,6 +41,14 @@
             app:argType="com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel"
             app:nullable="true"
             android:defaultValue="@null"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/group_favorite"
+        android:name="com.slashmobility.seleccion.ray.pasache.ui.GroupsFavoriteFragment"
+        android:label="GROUP_DETAIL"
+        tools:layout="@layout/fragment_groups_favorite"
+        >
     </fragment>
 
 </navigation>

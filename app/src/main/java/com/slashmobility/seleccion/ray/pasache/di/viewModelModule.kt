@@ -1,6 +1,7 @@
 package com.slashmobility.seleccion.ray.pasache.di
 
 import com.slashmobility.seleccion.ray.pasache.ui.GroupDetailViewModel
+import com.slashmobility.seleccion.ray.pasache.ui.GroupsFavoriteViewModel
 import com.slashmobility.seleccion.ray.pasache.ui.GroupsViewModel
 import com.slashmobility.seleccion.ray.pasache.ui.SharedViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -11,4 +12,5 @@ var viewModelModule = module {
     viewModel { GroupsViewModel(get(named(GROUPS_USE_CASE))) }
     viewModel { SharedViewModel() }
     viewModel { GroupDetailViewModel(get(named(GROUPS_USE_CASE))) }
+    viewModel { GroupsFavoriteViewModel(get(named(GROUPS_USE_CASE))) }
 }

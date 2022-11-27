@@ -43,6 +43,7 @@ class GroupDetailFragment: Fragment() {
         group.name?.let {
             sharedViewModel.updateToolbarNavBack(it)
         }
+
         binding?.groupCardView?.configUI(group)
         binding?.favButton?.setOnClickListener { view ->
             view.isSelected = !view.isSelected
