@@ -28,8 +28,9 @@ class GroupDetailFragment: Fragment() {
     ): View? {
         binding = FragmentGroupDetailBinding.inflate(inflater, container, false)
         group = args.group as GroupAPIModel
+        configObserver()
         configUI(group)
-
+        viewModel.retrieveFavoriteGroupList()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object: OnBackPressedCallback(true){
                 override fun handleOnBackPressed() {
@@ -37,6 +38,17 @@ class GroupDetailFragment: Fragment() {
                 }
             })
         return binding?.root
+    }
+
+    private fun configObserver() {
+        viewModel.groupsFavoriteLiveData.observe(viewLifecycleOwner) {
+            val match = viewModel.groupFavoriteList.find {
+                it.id == group.id
+            }
+            if(match!= null) {
+                binding?.favButton?.isSelected = true
+            }
+        }
     }
 
     private fun configUI(group: GroupAPIModel) {

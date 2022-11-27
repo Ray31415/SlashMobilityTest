@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 
 class GroupsFavoriteViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
 
-    var groupList = ArrayList<GroupAPIModel>()
+    var groupFavoriteList = ArrayList<GroupAPIModel>()
     var groupsLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun retrieveFavoriteGroupList() {
@@ -20,8 +20,8 @@ class GroupsFavoriteViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
                 groupsUseCase.retrieveFavoriteUseCase.invoke()
             }
 
-            groupList.clear()
-            groupList.addAll(result)
+            groupFavoriteList.clear()
+            groupFavoriteList.addAll(result)
             groupsLiveData.value = true
         }
     }

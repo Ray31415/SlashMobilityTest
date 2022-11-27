@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,13 @@ class GroupsFavoriteFragment: Fragment() {
         viewModel.retrieveFavoriteGroupList()
         configObserver()
         configUI()
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object: OnBackPressedCallback(true){
+                override fun handleOnBackPressed() {
+                    findNavController().popBackStack()
+                }
+            })
         return binding?.root
     }
 
@@ -41,7 +49,7 @@ class GroupsFavoriteFragment: Fragment() {
         sharedViewModel.updateToolbarNavBack(getString(R.string.favorites))
 
         //adapter
-        adapter = GroupsAdapter(viewModel.groupList) { group ->
+        adapter = GroupsAdapter(viewModel.groupFavoriteList) { group ->
             findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail(group))
         }
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
