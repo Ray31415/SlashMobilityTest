@@ -61,6 +61,8 @@ class GroupDetailFragment: Fragment() {
             view.isSelected = !view.isSelected
             if(view.isSelected){
                 viewModel.insertFavoriteGroupList(group)
+            } else {
+                viewModel.removeFavoriteGroup(group)
             }
         }
         binding?.descriptionTextView?.text = group.description

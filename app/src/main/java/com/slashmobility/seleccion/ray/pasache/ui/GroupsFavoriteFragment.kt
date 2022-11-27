@@ -50,7 +50,7 @@ class GroupsFavoriteFragment: Fragment() {
 
         //adapter
         adapter = GroupsAdapter(viewModel.groupFavoriteList) { group ->
-            findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail(group))
+            findNavController().navigate(GroupsFavoriteFragmentDirections.actionSelectorToGroupDetail(group))
         }
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding?.recyclerView?.layoutManager = llm

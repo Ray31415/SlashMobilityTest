@@ -14,12 +14,6 @@ class GroupDetailViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
     var groupFavoriteList = ArrayList<GroupAPIModel>()
     var groupsFavoriteLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun insertFavoriteGroupList(groupAPIModel: GroupAPIModel) {
-        viewModelScope.launch {
-            groupsUseCase.insertFavoriteUseCase.invoke(groupAPIModel)
-        }
-    }
-
     fun retrieveFavoriteGroupList() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){
@@ -29,6 +23,18 @@ class GroupDetailViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
             groupFavoriteList.clear()
             groupFavoriteList.addAll(result)
             groupsFavoriteLiveData.value = true
+        }
+    }
+
+    fun insertFavoriteGroupList(groupAPIModel: GroupAPIModel) {
+        viewModelScope.launch {
+            groupsUseCase.insertFavoriteUseCase.invoke(groupAPIModel)
+        }
+    }
+
+    fun removeFavoriteGroup(groupAPIModel: GroupAPIModel) {
+        viewModelScope.launch {
+            groupsUseCase.removeFavoriteUseCase.invoke(groupAPIModel)
         }
     }
 }
