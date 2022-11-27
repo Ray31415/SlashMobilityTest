@@ -55,9 +55,9 @@ class GroupsFragment: Fragment() {
 
     private fun configUI() {
         //adapter
-        adapter = GroupsAdapter(viewModel.groupList, {
-            findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail())
-        })
+        adapter = GroupsAdapter(viewModel.groupList) { group ->
+            findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail(group))
+        }
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding?.recyclerView?.layoutManager = llm
         binding?.recyclerView?.adapter = adapter
