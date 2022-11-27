@@ -9,7 +9,7 @@ import com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel
 import com.squareup.picasso.Picasso
 
 
-class GroupsAdapter(var groupList: List<GroupAPIModel>): RecyclerView.Adapter<GroupsAdapter.GroupVH>() {
+class GroupsAdapter(var groupList: List<GroupAPIModel>, val onItemClick: () -> Unit): RecyclerView.Adapter<GroupsAdapter.GroupVH>() {
 
     inner class GroupVH(val binding: ItemGroupBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -25,6 +25,7 @@ class GroupsAdapter(var groupList: List<GroupAPIModel>): RecyclerView.Adapter<Gr
         holder.binding.titleTextView.text = group.name
         holder.binding.shorDescriptionTextView.text = group.descriptionShort
         holder.binding.dataTextView.text = group.date?.toDate("dd/MM/yyyy")
+        holder.binding.root.setOnClickListener { onItemClick.invoke() }
     }
 
     override fun getItemCount() = groupList.size

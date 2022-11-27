@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.slashmobility.seleccion.ray.pasache.R
 import com.slashmobility.seleccion.ray.pasache.databinding.FragmentGroupsBinding
@@ -39,7 +40,7 @@ class GroupsFragment: Fragment() {
             }
 
             R.id.refresh -> {
-                viewModel.retrieveGroupList()
+                reloadUI()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -54,9 +55,16 @@ class GroupsFragment: Fragment() {
 
     private fun configUI() {
         //adapter
-        adapter = GroupsAdapter(viewModel.groupList)
+        adapter = GroupsAdapter(viewModel.groupList, {
+            findNavController().navigate(GroupsFragmentDirections.actionSelectorToGroupDetail())
+        })
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding?.recyclerView?.layoutManager = llm
         binding?.recyclerView?.adapter = adapter
+    }
+
+    private fun reloadUI() {
+        findNavController().popBackStack()
+        findNavController().navigate(R.id.group_list)
     }
 }
