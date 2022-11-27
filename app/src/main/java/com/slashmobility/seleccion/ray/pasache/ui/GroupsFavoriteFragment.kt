@@ -41,7 +41,11 @@ class GroupsFavoriteFragment: Fragment() {
 
     private fun configObserver() {
         viewModel.groupsLiveData.observe(viewLifecycleOwner) {
-            adapter?.notifyDataSetChanged()
+            if(viewModel.groupFavoriteList.isEmpty()){
+                binding?.emptyStateTextView?.visibility = View.VISIBLE
+            } else {
+                adapter?.notifyDataSetChanged()
+            }
         }
     }
 
@@ -53,7 +57,9 @@ class GroupsFavoriteFragment: Fragment() {
             findNavController().navigate(GroupsFavoriteFragmentDirections.actionSelectorToGroupDetail(group))
         }
         val llm = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
         binding?.recyclerView?.layoutManager = llm
         binding?.recyclerView?.adapter = adapter
+
     }
 }
