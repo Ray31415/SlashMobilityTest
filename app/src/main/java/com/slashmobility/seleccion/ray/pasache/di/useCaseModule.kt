@@ -9,6 +9,7 @@ internal const val RETRIEVE_GROUPS = "RetrieveGroups"
 internal const val RETRIEVE_FAVORITE_GROUPS = "RetrieveFavoriteGroups"
 internal const val INSERT_FAVORITE_GROUPS = "InsertFavoriteGroups"
 internal const val REMOVE_FAVORITE_GROUPS = "RemoveFavoriteGroups"
+internal const val RETRIEVE_GROUP_IMAGES = "RetrieveGroupImages"
 
 var useCaseModule = module{
 
@@ -16,11 +17,13 @@ var useCaseModule = module{
     single(named(RETRIEVE_FAVORITE_GROUPS)){ RetrieveFavoriteUseCase(get(named(GROUPS_REPOSITORY))) }
     single(named(INSERT_FAVORITE_GROUPS)){ InsertFavoriteUseCase(get(named(GROUPS_REPOSITORY))) }
     single(named(REMOVE_FAVORITE_GROUPS)){ RemoveFavoriteUseCase(get(named(GROUPS_REPOSITORY))) }
+    single(named(RETRIEVE_GROUP_IMAGES)){ RetrieveGroupImagesUseCase(get(named(GROUPS_REPOSITORY))) }
 
     single(named(GROUPS_USE_CASE)){ GroupsUseCase(
         get(named(RETRIEVE_GROUPS)),
         get(named(RETRIEVE_FAVORITE_GROUPS)),
         get(named(INSERT_FAVORITE_GROUPS)),
-        get(named(REMOVE_FAVORITE_GROUPS))
+        get(named(REMOVE_FAVORITE_GROUPS)),
+        get(named(RETRIEVE_GROUP_IMAGES))
     ) }
 }

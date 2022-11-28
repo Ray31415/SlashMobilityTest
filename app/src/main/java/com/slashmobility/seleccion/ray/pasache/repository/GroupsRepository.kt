@@ -24,4 +24,6 @@ class GroupsRepository(val remoteGroupsDataSource: RemoteGroupsDataSource,
     }
 
     fun retrieveFavoriteGroup() = localGroupsDataSource.retrieveFavoriteGroup()
+
+    suspend fun retrieveGroupImages(groupId: Int) = remoteGroupsDataSource.retrieveGroupImages(groupId)
 }
