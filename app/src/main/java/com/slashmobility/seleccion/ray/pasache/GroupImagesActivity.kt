@@ -19,18 +19,30 @@ class GroupImagesActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGroupImagesBinding.inflate(layoutInflater)
         val groupId = intent.getIntExtra(PUT_EXTRA_GROUP_ID, 0)
+        showLoading(true)
         viewModel.retrieveGroupImages(groupId)
         setContentView(binding?.root)
         configUI()
         configObserver()
     }
 
+    private fun showLoading(b: Boolean) {
+        if(b){
+            binding?.loadingLayout?.visibility = View.VISIBLE
+        }
+        else {
+            binding?.loadingLayout?.visibility = View.GONE
+        }
+    }
+
     private fun configObserver() {
         viewModel.imagesLiveData.observe(this) {
+            showLoading(false)
             adapter?.notifyDataSetChanged()
         }
 
         viewModel.errorLiveData.observe(this) {
+            showLoading(false)
             binding?.errorLayout?.visibility = View.VISIBLE
         }
     }

@@ -1,6 +1,5 @@
 package com.slashmobility.seleccion.ray.pasache.ui
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -24,11 +23,21 @@ class GroupsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentGroupsBinding.inflate(inflater, container, false)
+        showLoading(true)
         viewModel.retrieveGroupList()
         setHasOptionsMenu(true)
         configObservers()
         configUI()
         return binding?.root
+    }
+
+    private fun showLoading(b: Boolean) {
+        if(b){
+            binding?.loadingLayout?.visibility = View.VISIBLE
+        }
+        else {
+            binding?.loadingLayout?.visibility = View.GONE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -52,10 +61,12 @@ class GroupsFragment: Fragment() {
 
     private fun configObservers() {
         viewModel.groupsLiveData.observe(viewLifecycleOwner) {
+            showLoading(false)
             adapter?.notifyDataSetChanged()
         }
 
         viewModel.errorLiveData.observe(viewLifecycleOwner){
+            showLoading(false)
             binding?.errorLayout?.visibility = View.VISIBLE
         }
     }
