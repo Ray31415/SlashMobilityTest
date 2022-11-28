@@ -54,6 +54,10 @@ class GroupsFragment: Fragment() {
         viewModel.groupsLiveData.observe(viewLifecycleOwner) {
             adapter?.notifyDataSetChanged()
         }
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner){
+            binding?.errorLayout?.visibility = View.VISIBLE
+        }
     }
 
     private fun configUI() {

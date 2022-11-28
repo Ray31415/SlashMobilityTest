@@ -1,6 +1,7 @@
 package com.slashmobility.seleccion.ray.pasache
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.slashmobility.seleccion.ray.pasache.databinding.ActivityGroupImagesBinding
 import com.slashmobility.seleccion.ray.pasache.ui.GroupImagesAdapter
@@ -27,6 +28,10 @@ class GroupImagesActivity: AppCompatActivity() {
     private fun configObserver() {
         viewModel.imagesLiveData.observe(this) {
             adapter?.notifyDataSetChanged()
+        }
+
+        viewModel.errorLiveData.observe(this) {
+            binding?.errorLayout?.visibility = View.VISIBLE
         }
     }
 

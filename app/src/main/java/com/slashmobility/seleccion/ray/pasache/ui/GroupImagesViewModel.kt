@@ -11,17 +11,24 @@ class GroupImagesViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
 
     var groupImageList = ArrayList<String>()
     var imagesLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    var errorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun retrieveGroupImages(groupId: Int){
         viewModelScope.launch {
-            val result = groupsUseCase.retrieveGroupImagesUseCase.invoke(groupId)
+            try {
+                val result = groupsUseCase.retrieveGroupImagesUseCase.invoke(groupId)
 
-            if(result.isSuccessful && result.body() != null){
-                groupImageList.clear()
-                result.body()?.let {
-                    groupImageList.addAll(it)
-                    imagesLiveData.value = true
+                if(result.isSuccessful && result.body() != null){
+                    groupImageList.clear()
+                    result.body()?.let {
+                        groupImageList.addAll(it)
+                        imagesLiveData.value = true
+                    }
+                }else {
+                    errorLiveData.value = true
                 }
+            } catch (exception: Exception){
+                errorLiveData.value = true
             }
         }
     }

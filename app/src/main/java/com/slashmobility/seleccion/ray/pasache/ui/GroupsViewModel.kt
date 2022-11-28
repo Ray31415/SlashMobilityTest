@@ -11,19 +11,26 @@ class GroupsViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
 
     var groupList = ArrayList<GroupAPIModel>()
     var groupsLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    var errorLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     fun retrieveGroupList() {
         viewModelScope.launch {
-            val result = groupsUseCase.retrieveGroupsUseCase.invoke()
+            try{
+                val result = groupsUseCase.retrieveGroupsUseCase.invoke()
 
-            if(result.isSuccessful && result.body() != null){
-                groupList.clear()
-                result.body()?.let {
-                    groupList.addAll(it)
-                    groupsLiveData.value = true
+                if(result.isSuccessful && result.body() != null){
+                    groupList.clear()
+                    result.body()?.let {
+                        groupList.addAll(it)
+                        groupsLiveData.value = true
+                    }
                 }
+                else {
+                    errorLiveData.value = true
+                }
+            } catch (exception: Exception){
+                errorLiveData.value = true
             }
-            else {}
         }
     }
 }

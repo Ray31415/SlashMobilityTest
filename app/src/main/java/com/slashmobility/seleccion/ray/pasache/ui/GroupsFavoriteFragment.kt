@@ -42,10 +42,14 @@ class GroupsFavoriteFragment: Fragment() {
     private fun configObserver() {
         viewModel.groupsLiveData.observe(viewLifecycleOwner) {
             if(viewModel.groupFavoriteList.isEmpty()){
-                binding?.emptyStateTextView?.visibility = View.VISIBLE
+                binding?.errorLayout?.visibility = View.VISIBLE
             } else {
                 adapter?.notifyDataSetChanged()
             }
+        }
+
+        viewModel.errorLiveData.observe(viewLifecycleOwner){
+            binding?.errorLayout?.visibility = View.VISIBLE
         }
     }
 
