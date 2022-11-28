@@ -19,6 +19,6 @@ Kotlin
 * Picasso
 
 ### Author
-Ray Pasache
-email: me@raypasache.com
-webside: raypasache.com
+Ray Pasache<br/>
+email: me@raypasache.com<br/>
+webside: www.raypasache.com
