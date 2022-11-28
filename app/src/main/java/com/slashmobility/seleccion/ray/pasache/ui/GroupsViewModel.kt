@@ -20,8 +20,8 @@ class GroupsViewModel(val groupsUseCase: GroupsUseCase): ViewModel() {
                 groupList.clear()
                 result.body()?.let {
                     groupList.addAll(it)
+                    groupsLiveData.value = true
                 }
-                groupsLiveData.value = true
             }
             else {}
         }
