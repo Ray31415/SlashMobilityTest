@@ -1,4 +1,4 @@
-package com.slashmobility.seleccion.ray.pasache.extensions
+package com.slashmobility.seleccion.ray.pasache.utils.extensions
 
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity

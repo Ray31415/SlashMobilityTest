@@ -1,4 +1,4 @@
-package com.slashmobility.seleccion.ray.pasache.extensions
+package com.slashmobility.seleccion.ray.pasache.utils.extensions
 
 import org.joda.time.*
 import org.joda.time.format.DateTimeFormat

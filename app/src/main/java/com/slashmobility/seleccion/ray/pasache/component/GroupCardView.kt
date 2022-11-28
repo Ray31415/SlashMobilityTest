@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.slashmobility.seleccion.ray.pasache.databinding.ComponentGroupCardBinding
-import com.slashmobility.seleccion.ray.pasache.extensions.toDate
+import com.slashmobility.seleccion.ray.pasache.utils.extensions.toDate
 import com.slashmobility.seleccion.ray.pasache.model.GroupAPIModel
 import com.squareup.picasso.Picasso
 

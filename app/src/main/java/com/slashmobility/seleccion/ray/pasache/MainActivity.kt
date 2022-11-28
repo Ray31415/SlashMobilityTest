@@ -3,8 +3,8 @@ package com.slashmobility.seleccion.ray.pasache
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.slashmobility.seleccion.ray.pasache.databinding.ActivityMainBinding
-import com.slashmobility.seleccion.ray.pasache.extensions.updateToolbarNavBack
-import com.slashmobility.seleccion.ray.pasache.extensions.updateToolbarNoNavIcon
+import com.slashmobility.seleccion.ray.pasache.utils.extensions.updateToolbarNavBack
+import com.slashmobility.seleccion.ray.pasache.utils.extensions.updateToolbarNoNavIcon
 import com.slashmobility.seleccion.ray.pasache.ui.SharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
